@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv"); //import library to use .env
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
-const producRoute = require("./routes/product");
+const productRoute = require("./routes/product");
+const cartRoute = require("./routes/cart");
+const orderRoute = require("./routes/order");
 
 
 dotenv.config(); // configuration to use .env
@@ -24,7 +26,9 @@ mongoose.connect(
 app.use(express.json()) //to enable json to be used
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/products", producRoute);
+app.use("/api/products", productRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
 
 app.listen(process.env.PORT || 5000, ()=>{      //if no port number in env file use this port number
     console.log("Backend server is running!");
